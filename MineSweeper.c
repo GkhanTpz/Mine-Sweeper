@@ -202,4 +202,117 @@ void PlaceMines()
     // Place mines randomly on the board.
     for(int i = 0; i <= mine; i++)
     {
+        row = 1 + rand() % TABLE_SIZE;
+        column = 1 + rand() % TABLE_SIZE;
 
+        if(subTable[row][column] == -1)
+            i--; // If there's already a mine here, try again
+
+        subTable[row][column] = -1;
+
+        // Update the surrounding cells' mine counts.
+        for(int x = -1; x <= 1; x++)
+            for(int y = -1; y <= 1; y++)
+            {
+                if(subTable[row][column] == -1)
+                {
+                    if(subTable[row + x][column + y] != -1)
+                        subTable[row + x][column + y]++;
+                }
+            }
+    }
+}
+
+int Digger(int row, int column)
+{
+    int gameCheck = 0;
+
+    if(subTable[row][column] == -1)
+        gameCheck = LOSE; // Player hit a mine.
+    else if(subTable[row][column] > 0)
+    {
+        table[row][column] = ('0' + subTable[row][column]);
+        gameCheck = CheckGame(); // Check if game is won.
+        gameCheck = CONTINUE;
+    }
+    else
+    {
+        Explorer(row, column); // Explore empty cells.
+        gameCheck = CheckGame(); // Check if game is won.
+    }
+
+    return gameCheck;
+}
+
+void Explorer(int row, int column)
+{
+    if(row < 1 || row > TABLE_SIZE || column < 1 || column > TABLE_SIZE)
+        return; // Out of bounds check.
+
+    if(table[row][column] != '#')
+        return; // Already explored check.
+
+    table[row][column] = '0' + subTable[row][column];
+
+    // Explore surrounding cells recursively.
+    for(int i = -1; i <= 1; i++)
+        for(int j = -1; j <= 1; j++)
+        {
+            if(subTable[row + i][column + j] > 0 && table[row + i][column + j] == '#')
+            {
+                table[row + i][column + j] = '0' + subTable[row + i][column + j];
+            }
+            else if(subTable[row + i][column + j] == 0 && table[row + i][column + j] == '#')
+            {
+                Explorer(row + i, column + j);
+            }
+        }
+}
+
+int CheckGame()
+{
+    int status;
+    count = 0;
+
+    // Count the number of mines.
+    for(int i = 1; i <= TABLE_SIZE; i++)
+        for(int j = 1; j <= TABLE_SIZE; j++)
+            if(subTable[i][j] == -1)
+                count++;
+
+    // Check if all mines are flagged.
+    if(count == MINE_SIZE)
+        status = WIN;
+    else
+        status = CONTINUE;
+
+    return status;
+}
+
+void TryPlay()
+{
+    int tryPlay;
+    printf("%s","Try Retry? (1: Yes, 0: No)\n");
+    scanf("%d", &tryPlay);
+
+    switch(tryPlay)
+    {
+        case 0:
+            printf("%s","Thank you to play.\n");
+            exit(0);
+            break;
+
+        case 1:
+            dCount = 0;
+            result = CONTINUE;
+            CreateSubTable();
+            InitializerTable();
+            exit(0);
+            break;
+
+        default:
+            printf("%s","Invalid value");
+            exit(0);
+            break;
+    }
+}

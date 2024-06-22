@@ -223,7 +223,11 @@ void PlaceMines()
     }
 }
 
+<<<<<<< HEAD
 int Dig(int row, int column)
+=======
+int Digger(int row, int column)
+>>>>>>> 1659bf2b4db9cbd054359f521dfd1a995c4f7502
 {
     int gameCheck = 0;
 
@@ -307,6 +311,10 @@ void TryPlay()
             result = CONTINUE;
             CreateSubTable();
             InitializerTable();
+<<<<<<< HEAD
+=======
+            exit(0);
+>>>>>>> 1659bf2b4db9cbd054359f521dfd1a995c4f7502
             break;
 
         default:

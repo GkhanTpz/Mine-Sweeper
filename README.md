@@ -105,14 +105,6 @@ In this example, the player is checking cell (3,4). Depending on whether this ce
 
 ---
 
-## **Future Enhancements** 🔮
-
-Potential improvements for this project include:
-- Adding different difficulty levels (varying grid size and mine count).
-- Implementing a graphical user interface (GUI) for better user experience.
-- Adding a timer to track how long it takes for players to finish the game.
-
----
 
 ## 📝 **License**
 

@@ -1,8 +1,10 @@
-# Mine Sweeper Game in C
+# **Mine Sweeper Game in C 🕹️**
 
 This project is a simple implementation of the classic **Mine Sweeper** game written in **C**. It features an 8x8 grid where the player must locate hidden mines. The player wins by flagging all the mines or uncovering all safe cells. Conversely, the player loses by uncovering a mine.
 
-## How the Game Works
+---
+
+## **How the Game Works** 🎮
 
 - The game board consists of an 8x8 grid (modifiable via the `TABLE_SIZE` definition).
 - **Mines** are placed randomly on the grid, with the number of mines set to `MINE_SIZE` (default: 7).
@@ -12,28 +14,35 @@ This project is a simple implementation of the classic **Mine Sweeper** game wri
   - **Explore (`e`)**: Remove a flag and explore the cell (similar to the "check" action).
 - The game continues until the player either successfully flags all mines (victory) or uncovers a mine (loss).
 
-### Key Features
+---
+
+## **Key Features** ✨
+
 1. **Dynamic Mine Placement**: Mines are placed randomly each time the game starts.
 2. **Recursive Exploration**: If a player uncovers an empty (zero adjacent mines) cell, adjacent cells are recursively explored, similar to the original game.
 3. **Victory and Loss Conditions**: The game checks for a win when all mines are flagged correctly, or a loss when the player digs up a mine.
 
-## File Structure
+---
+
+## **File Structure** 📂
 
 The game is implemented in a single C file with the following key components:
 
-### Global Variables
+### **Global Variables** 🗂️
+
 ```c
 int mine, result, count = 0, dCount = 0;
 int subTable[TABLE_SIZE + 2][TABLE_SIZE + 2];
 char table[TABLE_SIZE + 2][TABLE_SIZE + 2];
 ```
+
 - **`mine`**: The total number of mines.
 - **`result`**: The current status of the game (`WIN`, `LOSE`, `CONTINUE`).
 - **`count` & `dCount`**: Track the player's progress with flagged mines and remaining unflagged mines.
 - **`subTable`**: Stores the hidden game data (mines and adjacent mine counts).
 - **`table`**: Stores the visible game board displayed to the player.
 
-### Function Descriptions
+### **Function Descriptions** 📝
 
 - **`CreateSubTable()`**: Initializes the hidden game board, places mines randomly, and calculates adjacent mine counts.
   
@@ -53,7 +62,9 @@ char table[TABLE_SIZE + 2][TABLE_SIZE + 2];
   
 - **`TryPlay()`**: After a game is won or lost, the player is asked if they want to play again.
 
-### How to Play
+---
+
+## **How to Play** 🎯
 
 1. Start the game by running the program. The board will be displayed with numbers representing rows and columns.
    
@@ -71,7 +82,7 @@ char table[TABLE_SIZE + 2][TABLE_SIZE + 2];
 
 4. After the game ends, you can choose to play again or exit.
 
-### Example Gameplay
+### **Example Gameplay** 🕹️
 
 ```
 Welcome to Mine Sweeper
@@ -92,7 +103,10 @@ Please enter values of coordinate (c,row,column or d, row, column or e, row, col
 
 In this example, the player is checking cell (3,4). Depending on whether this cell contains a mine or not, the game will proceed accordingly.
 
-### Future Enhancements
+---
+
+## **Future Enhancements** 🔮
+
 Potential improvements for this project include:
 - Adding different difficulty levels (varying grid size and mine count).
 - Implementing a graphical user interface (GUI) for better user experience.
@@ -100,6 +114,8 @@ Potential improvements for this project include:
 
 ---
 
-## 📝 License
+## 📝 **License** 📜
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+---

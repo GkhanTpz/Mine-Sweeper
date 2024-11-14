@@ -1,5 +1,3 @@
----
-
 # Mine Sweeper Game in C
 
 This project is a simple implementation of the classic **Mine Sweeper** game written in **C**. It features an 8x8 grid where the player must locate hidden mines. The player wins by flagging all the mines or uncovering all safe cells. Conversely, the player loses by uncovering a mine.
@@ -101,7 +99,6 @@ Potential improvements for this project include:
 - Adding a timer to track how long it takes for players to finish the game.
 
 ---
-
 
 ## 📝 License
 

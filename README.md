@@ -101,3 +101,8 @@ Potential improvements for this project include:
 - Adding a timer to track how long it takes for players to finish the game.
 
 ---
+
+
+## 📝 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
